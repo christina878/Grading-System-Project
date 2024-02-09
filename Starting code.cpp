@@ -35,7 +35,6 @@ int main() {
  file.open (gradesIn.txt)
 
   //we used while (! end of the file ) to keep reading the data from the file until last charcter in the file.
-  
   while (!file.eof())
 {
 
