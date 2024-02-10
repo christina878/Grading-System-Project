@@ -139,6 +139,12 @@ int main() {
 
 
 		//input all the data in gradeOut2.txt
+		output2 <<"--------------------------------------------------------------------------" << endl;
+		output2 << "Student's first and last name: " << name << " " << lastName << endl;
+		output2 << "Course average: " << left<< setw(width) << average << endl;
+		output2 << "Letter grade: " << setw(width) << calculateLetterGrade(average) << endl;
+		
+	}
 
 
 	}
