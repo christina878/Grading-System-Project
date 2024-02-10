@@ -129,7 +129,13 @@ int main() {
 		average = (attendance * 0.10) + (labResult * 0.15) + (hw_result * 0.15) + (quiz_result * 0.15) + (groupwork * 0.05) + (midterm * 0.20) + (final * 0.20);
 
 		output1 << name << endl;
-
+		output1 << attendance << endl;
+		output1 << groupwork << endl;
+		output1 << quiz_result << endl;
+		output1 << labResult << endl;
+		output1 << hw_result << endl;
+		output1 << final << endl;
+		output1 << average << endl;
 
 
 		//input all the data in gradeOut2.txt
