@@ -43,6 +43,9 @@ int main() {
   while (!file.eof())
 {
 
+hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
+
+	cout << "Average Homework Score: " << hw_result << endl;
 
 
 
