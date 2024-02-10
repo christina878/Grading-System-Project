@@ -11,13 +11,29 @@ using namespace std;
 
 
 // 2. findMinQuiz, which takes 4 double parameters (the 4 quiz scores) and returns the lowest quiz score.
-
-
-
+double findMinQuiz( double quizOne, double quizTwo, double quizThree, double quizFour) 
+{
+	if (quizOne < quizTwo && quizTwo < quizThree && quizThree < quizFour) {
+		return quizOne;
+	}
+	if (quizTwo < quizOne && quizOne < quizThree && quizThree < quizFour) {
+		return quizTwo;
+	}
+	if (quizThree < quizOne && quizOne < quizTwo && quizTwo < quizFour) {
+		return quizThree;
+	}
+	if (quizFour < quizOne && quizOne < quizTwo && quizTwo < quizThree) {
+		return quizFour;
+	}
+}
 
 // 3. findAverageQuizScore that takes 4 double parameters (the 4 quiz scores). This function removes the lowest quiz score and returns the average of the quiz scores.
 
-
+double findAverageQuizScore (double Qscore1, double Qscore2, double Qscore3, double Qscore4)
+{
+  
+return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz(Qscore1, Qscore2, Qscore3, Qscore4))/3;
+}
 
 // 4. findAverageHomeworkScore that takes 4 double parameters which are the homework scores. The function returns the average of the 4 homework scores.
 
@@ -72,15 +88,18 @@ int main() {
 
 
 		//read in homework
-                 file >> hw1 >> hw2 >> hw3 >> hw4;
+                 
                  hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
                  cout << "Average Homework Score: " << hw_result << endl;
 
 
 		//read in quizz
+                file>>Qscore1>>Qscore2>>Qscore3>>Qscore1;
+                quizz_result =findAverageQuizScore(Qscore1, Qscore2, Qscore3, Qscore4)
+                cout<<" Quizzes Average scoreis:" <<qizz_result<< endl;
+		
 
-
-		//read in geoup work score
+               //read in geoup work score
 
 
 
