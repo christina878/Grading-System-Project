@@ -72,6 +72,9 @@ int main() {
 
 
 		//read in homework
+                 file >> hw1 >> hw2 >> hw3 >> hw4;
+                 hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
+                 cout << "Average Homework Score: " << hw_result << endl;
 
 
 		//read in quizz
