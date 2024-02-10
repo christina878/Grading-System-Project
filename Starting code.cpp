@@ -17,7 +17,7 @@ using namespace std;
 double findAverageQuizScore (double Qscore1, double Qscore2, double Qscore3, double Qscore4)
 {
   
-return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz())/3;
+return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz(Qscore1, Qscore2, Qscore3, Qscore4))/3;
 }
 
 // 4. findAverageHomeworkScore that takes 4 double parameters which are the homework scores. The function returns the average of the 4 homework scores.omar
