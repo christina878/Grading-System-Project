@@ -6,46 +6,56 @@ using namespace std;
 // functions:
 
 // 1. calculateLetterGrade, which takes a double parameter (the weighted average) and returns a string type letter grade.
-
-
-
-
-// 2. findMinQuiz, which takes 4 double parameters (the 4 quiz scores) and returns the lowest quiz score.
-double findMinQuiz( double quizOne, double quizTwo, double quizThree, double quizFour) 
-{
-	if (quizOne < quizTwo && quizTwo < quizThree && quizThree < quizFour) {
-		return quizOne;
+string calculateLetterGrade(double avg) {
+	if (avg >= 90) {
+		return "A";
 	}
-	if (quizTwo < quizOne && quizOne < quizThree && quizThree < quizFour) {
-		return quizTwo;
+	else if (avg >= 80) {
+		return "B";
 	}
-	if (quizThree < quizOne && quizOne < quizTwo && quizTwo < quizFour) {
-		return quizThree;
+	else if (avg >= 75) {
+		return "C+";
 	}
-	if (quizFour < quizOne && quizOne < quizTwo && quizTwo < quizThree) {
-		return quizFour;
+	else if (avg >= 70) {
+		return "C";
+	}
+	else if (avg >= 60) {
+		return "D";
+	}
+	else {
+		return "F";
 	}
 }
 
-// 3. findAverageQuizScore that takes 4 double parameters (the 4 quiz scores). This function removes the lowest quiz score and returns the average of the quiz scores.
+// 2. findMinQuiz, which takes 4 double parameters (the 4 quiz scores) and returns the lowest quiz score.
+double findMinQuiz(double quizOne, double quizTwo, double quizThree, double quizFour) {
+	double min = quizOne;
+	if (quizTwo < min) {
+		min = quizTwo;
+	}
+	if (quizThree < min) {
+		min = quizThree;
+	}
+	if (quizFour < min) {
+		min = quizFour;
+	}
+	return min;
+}
 
-double findAverageQuizScore (double Qscore1, double Qscore2, double Qscore3, double Qscore4)
-{
-  
-return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz(Qscore1, Qscore2, Qscore3, Qscore4)) / 3.0;
+
+// 3. findAverageQuizScore that takes 4 double parameters (the 4 quiz scores). This function removes the lowest quiz score and returns the average of the quiz scores.
+double findAverageQuizScore(double Qscore1, double Qscore2, double Qscore3, double Qscore4) {
+	return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz(Qscore1, Qscore2, Qscore3, Qscore4)) / 3.0;
 }
 
 // 4. findAverageHomeworkScore that takes 4 double parameters which are the homework scores. The function returns the average of the 4 homework scores.
-
 double findAverageHomeworkScore(double hw1, double hw2, double hw3, double hw4) {
 	return (hw1 + hw2 + hw3 + hw4) / 4.0;
 }
 
 //5. findAverageLabScore that takes 8 double parameters (the 8 lab scores) and returns the average of the 8 lab scores.
-double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, double lab5, double lab6, double lab7, double lab8 ) {
-
-	double result = (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8.0;
-	return result;
+double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, double lab5, double lab6, double lab7, double lab8) {
+	return (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8.0;
 }
 
 
@@ -54,65 +64,71 @@ double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, d
 int main() {
 
 
-	string name;
-	int attendance, groupwork, midterm, final;
-	double lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8;
-	double labResult, hw_result, quizz_result;
-	double hw[4], quiz[4];
-	
+	string name, letterGrade;
 
-	ifstream file;
-	file.open("gradesIn.txt");
-	ofstream output1;
-	output1.open("gradesOut1.txt");
-	ofstream output2;
-	output2.open("gradesOut2.txt");
+	int attendance, groupwork, midterm, final;
+
+	
+	double lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8;
+
+	
+	double hw1, hw2, hw3, hw4;
+
+	
+	double quiz1, quiz2, quiz3, quiz4;
+
+	
+	double labResult, hw_result, quiz_result, average;
+
+
+	ifstream inFile("gradesIn.txt");
+	ofstream output1("gradesOut1.txt");
+	ofstream output2("gradesOut2.txt");
 
 	//we used while (! end of the file ) to keep reading the data from the file until last charcter in the file.
-	while (file.eof()){
+	while (!inFile.eof()) {
 
 		//reads in name
-		file>> name;
+		inFile >> name;
 
 		//read in attendance
-		file >>attendance
+		inFile >> attendance;
 
 		//read in labs
-
-		file >> lab1 >> lab2 >> lab3 >> lab4 >> lab5 >> lab6 >> lab7 >> lab8;
-		labResult= findAverageLabScore(lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8);
+		inFile >> lab1 >> lab2 >> lab3 >> lab4 >> lab5 >> lab6 >> lab7 >> lab8;
+		labResult = findAverageLabScore(lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8);
 
 
 		//read in homework
-                 file>>hw[0]>>hw[1]<<hw[2]<<hw[3];
-                 hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
-                 cout << "Average Homework Score: " << hw_result << endl;
+		inFile >> hw1 >> hw2 >> hw3 >> hw4;
+		hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
+		cout << "Average Homework Score: " << hw_result << endl;
 
 
-		//read in quizz
-                file>>quizz[0]>>quizz[1]>>quizz[2]>>quizz[3];
-                quizz_result =findAverageQuizScore(Qscore1, Qscore2, Qscore3, Qscore4)
-                cout<<" Quizzes Average scoreis:" <<qizz_result<< endl;
-		
+		//read in quiz
+		inFile >> quiz1 >> quiz2 >> quiz3 >> quiz4;
+		quiz_result = findAverageQuizScore(quiz1, quiz2, quiz3, quiz4);
+		cout << "Quizzes Average score is:" << quiz_result << endl;
 
-               //read in groupwork score
-		file>>groupwork;
+
+		//read in groupwork score
+		inFile >> groupwork;
 
 
 		//read in midterm
-		file>> midterm;
+		inFile >> midterm;
 
 
 
 		//read in final
-		file>>final;
+		inFile >> final;
 
 		//input all the data in gradeOut1.txt
 
-		
 
+		average = (attendance * 0.10) + (labResult * 0.15) + (hw_result * 0.15) + (quiz_result * 0.15) + (groupwork * 0.05) + (midterm * 0.20) + (final * 0.20);
 
-
+		output1 << name << endl;
 
 
 
@@ -120,8 +136,8 @@ int main() {
 
 
 	}
-	
-	file.close();
+
+	inFile.close();
 	output1.close();
 	output2.close();
 	return 0;
