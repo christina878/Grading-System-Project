@@ -64,20 +64,21 @@ double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, d
 int main() {
 
 
-	string name, letterGrade;
+	int width = 30;
+	string name, letterGrade, lastName;
 
 	int attendance, groupwork, midterm, final;
 
-	
+
 	double lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8;
 
-	
+
 	double hw1, hw2, hw3, hw4;
 
-	
+
 	double quiz1, quiz2, quiz3, quiz4;
 
-	
+
 	double labResult, hw_result, quiz_result, average;
 
 
@@ -89,7 +90,7 @@ int main() {
 	while (!inFile.eof()) {
 
 		//reads in name
-		inFile >> name;
+		inFile >> name >> lastname;
 
 		//read in attendance
 		inFile >> attendance;
@@ -102,15 +103,12 @@ int main() {
 		//read in homework
 		inFile >> hw1 >> hw2 >> hw3 >> hw4;
 		hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
-		cout << "Average Homework Score: " << hw_result << endl;
-
+		
 
 		//read in quiz
 		inFile >> quiz1 >> quiz2 >> quiz3 >> quiz4;
 		quiz_result = findAverageQuizScore(quiz1, quiz2, quiz3, quiz4);
-		cout << "Quizzes Average score is:" << quiz_result << endl;
-
-
+		
 		//read in groupwork score
 		inFile >> groupwork;
 
@@ -127,15 +125,16 @@ int main() {
 
 
 		average = (attendance * 0.10) + (labResult * 0.15) + (hw_result * 0.15) + (quiz_result * 0.15) + (groupwork * 0.05) + (midterm * 0.20) + (final * 0.20);
-
-		output1 << name << endl;
-		output1 << attendance << endl;
-		output1 << groupwork << endl;
-		output1 << quiz_result << endl;
-		output1 << labResult << endl;
-		output1 << hw_result << endl;
-		output1 << final << endl;
-		output1 << average << endl;
+		
+		output1 << "--------------------------------------------------------------------------" << endl;
+		output1 <<"Student's first and last name: "<< name << " " << lastName << endl;
+		output1 << "Attendance: "<< left << setw(width)<<attendance << endl;
+		output1 << "Group work: " <<  setw(width) << groupwork << endl;
+		output1 << "Average of quizzes: " << setw(width) << quiz_result << endl;
+		output1 << "Average of Labs: " << setw(width) << labResult << endl;
+		output1 << "Average of homework: " << setw(width) << hw_result << endl;
+		output1 << "Final exam: " << setw(width) << final << endl;
+		output1 << "Course average: "  <<setw(width) << average << endl;
 
 
 		//input all the data in gradeOut2.txt
