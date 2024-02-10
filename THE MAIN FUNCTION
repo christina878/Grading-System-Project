@@ -94,6 +94,7 @@ int main() {
 
 
 		//read in quizz
+
                 file>>Qscore1>>Qscore2>>Qscore3>>Qscore1;
                 quizz_result =findAverageQuizScore(Qscore1, Qscore2, Qscore3, Qscore4)
                 cout<<" Quizzes Average scoreis:" <<qizz_result<< endl;
