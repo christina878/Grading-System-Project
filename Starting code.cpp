@@ -1,8 +1,8 @@
 #include <iostream>
-#include <iomainp>
+#include <iomanip>
 #include <fstream>
 
-usind namespace std;
+using namespace std;
 // functions:
 
 // 1. calculateLetterGrade, which takes a double parameter (the weighted average) and returns a string type letter grade.
