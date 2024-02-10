@@ -21,7 +21,9 @@ return (Qscore1 + Qscore2 + Qscore3 + Qscore4 - findMinQuiz(Qscore1, Qscore2, Qs
 }
 
 // 4. findAverageHomeworkScore that takes 4 double parameters which are the homework scores. The function returns the average of the 4 homework scores.omar
-
+double findAverageHomeworkScore(double hw1, double hw2, double hw3, double hw4) {
+	return (hw1 + hw2 + hw3 + hw4) / 4.0;
+}
 
 //5. findAverageLabScore that takes 8 double parameters (the 8 lab scores) and returns the average of the 8 lab scores.the girl
 
