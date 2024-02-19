@@ -58,81 +58,61 @@ double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, d
 	return (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8.0;
 }
 
-
-//6. Add more functions if you would like to
-
 int main() {
 
 
 	int width = 30;
-	string name, letterGrade, lastName;
+	string firstname, letterGrade, lastName;
 
 	int attendance, groupwork, midterm, final, studentCount = 0;
 
-
 	double lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8;
-
 
 	double hw1, hw2, hw3, hw4;
 
-
 	double quiz1, quiz2, quiz3, quiz4;
-
 
 	double labResult, hw_result, quiz_result, average, avg_courses = 0.0;
 
 
-	ifstream inFile("gradesIn.txt");
-	ofstream output1("gradesOut1.txt");
-	ofstream output2("gradesOut2.txt");
+	ifstream inFile;
+    inFile.open("gradesIn.txt");
+	ofstream output1;
+    output1.open("gradesOut1.txt");
+	ofstream output2;
+    output2.open("gradesOut2.txt");
 
 	//we used while (! end of the file ) to keep reading the data from the file until last charcter in the file.
+	//while loop for read the informaiton trom the file and write in the screen.
 	while (!inFile.eof()) {
+		//taking from file to varibales //readig the file
+		inFile >> firstname >> lastName
+		>> attendance
+		>> lab1 >> lab2 >> lab3 >> lab4 >> lab5 >> lab6 >> lab7 >> lab8
+		>> hw1 >> hw2 >> hw3 >> hw4
+		>> quiz1 >> quiz2 >> quiz3 >> quiz4
+		>> groupwork
+		>> midterm
+		>> final;
 
-		//reads in name
-		if (inFile >> name >> lastName) {
-			studentCount++;
-		}
-		//read in attendance
-		inFile >> attendance;
 		attendance *= 10;
 
-		//read in labs
-		inFile >> lab1 >> lab2 >> lab3 >> lab4 >> lab5 >> lab6 >> lab7 >> lab8;
 		labResult = findAverageLabScore(lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8);
 		labResult *= 10;
 
-		//read in homework
-		inFile >> hw1 >> hw2 >> hw3 >> hw4;
 		hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
 		hw_result *= 10;
 
-
-		//read in quiz
-		inFile >> quiz1 >> quiz2 >> quiz3 >> quiz4;
 		quiz_result = findAverageQuizScore(quiz1, quiz2, quiz3, quiz4);
 
-
-
-		//read in groupwork score
-		inFile >> groupwork;
 		groupwork *= 10;
 
-		//read in midterm
-		inFile >> midterm;
-
-
-
-		//read in final
-		inFile >> final;
-
 		//input all the data in gradeOut1.txt
-
 
 		average = (attendance * 0.10) + (labResult * 0.15) + (hw_result * 0.15) + (quiz_result * 0.15) + (groupwork * 0.05) + (midterm * 0.20) + (final * 0.20);
 		avg_courses += average;
 		output1 << "--------------------------------------------------------------------------" << endl;
-		output1 << "Student's first and last name: " << name << " " << lastName << endl;
+		output1 << "Student's first and last name: " << firstname << " " << lastName << endl;
 		output1 << "Attendance: " << left << setw(width) << attendance << endl;
 		output1 << "Group work: " << setw(width) << groupwork << endl;
 		output1 << "Average of quizzes: " << setw(width) << quiz_result << endl;
@@ -144,7 +124,7 @@ int main() {
 
 		//input all the data in gradeOut2.txt
 		output2 << "--------------------------------------------------------------------------" << endl;
-		output2 << "Student's first and last name: " << name << " " << lastName << endl;
+		output2 << "Student's first and last name: " << firstname << " " << lastName << endl;
 		output2 << "Course average: " << left << setw(width) << average << endl;
 		output2 << "Letter grade: " << setw(width) << calculateLetterGrade(average) << endl;
 	
@@ -158,135 +138,3 @@ int main() {
 	output2.close();
 	return 0;
 }
-
-//                                                                    sample of gradesIn:
-/*
-* 
-Isabella Ramirez
-8
-6.5 7 8 9 5 7.5 6 8
-7.5 8.5 9.5 10
-92 89.5 94 88.5
-6
-85
-91
-
-
-Liam Thompson
-5
-5.5 6.5 7.5 8 6 7 8.5 9.5
-8 9 9.5 10
-78 82 88 90.5
-7
-94
-89
-
-Aria Patel
-2
-9 8 7.5 8.5 6.5 7 9 8.5
-8 9 9.5 10
-85 88 92 90.5
-5
-92
-87
-
-Elijah Mitchell
-10
-7 8.5 6.5 7.5 8 9 8.5 7
-8 9 9.5 10
-75 78 80 82
-6
-91
-89
-
-Sophia Nguyen
-7
-9 8 7.5 8.5 7 9 8 6
-9 8.5 9.5 10
-88 85 90 92.5
-8
-93
-86
-*/
-
-//                                                             output for gradesOut1:
-/*
---------------------------------------------------------------------------
-Student's first and last name: Isabella Ramirez
-Attendance: 80
-Group work : 60
-Average of quizzes : 91.8333
-Average of Labs : 71.25
-Average of homework : 88.75
-Final exam : 91
-Course average : 83.975
---------------------------------------------------------------------------
-Student's first and last name: Liam Thompson
-Attendance : 50
-Group work : 70
-Average of quizzes : 86.8333
-Average of Labs : 73.125
-Average of homework : 91.25
-Final exam : 89
-Course average : 82.7812
---------------------------------------------------------------------------
-Student's first and last name: Aria Patel
-Attendance : 20
-Group work : 50
-Average of quizzes : 90.1667
-Average of Labs : 80
-Average of homework : 91.25
-Final exam : 87
-Course average : 79.5125
---------------------------------------------------------------------------
-Student's first and last name: Elijah Mitchell
-Attendance : 100
-Group work : 60
-Average of quizzes : 80
-Average of Labs : 77.5
-Average of homework : 91.25
-Final exam : 89
-Course average : 86.3125
---------------------------------------------------------------------------
-Student's first and last name: Sophia Nguyen
-Attendance : 70
-Group work : 80
-Average of quizzes : 90.1667
-Average of Labs : 78.75
-Average of homework : 92.5
-Final exam : 86
-Course average : 86.0125
-*/
-
-
-
-
-
-//                                                                   output for gradesOut2:
-/*
---------------------------------------------------------------------------
-Student's first and last name: Isabella Ramirez
-Course average: 83.975
-Letter grade: B
---------------------------------------------------------------------------
-Student's first and last name: Liam Thompson
-Course average: 82.7812
-Letter grade: B
---------------------------------------------------------------------------
-Student's first and last name: Aria Patel
-Course average: 79.5125
-Letter grade: C+
---------------------------------------------------------------------------
-Student's first and last name: Elijah Mitchell
-Course average: 86.3125
-Letter grade: B
---------------------------------------------------------------------------
-Student's first and last name: Sophia Nguyen
-Course average: 86.0125
-Letter grade: B
---------------------------------------------------------------------------
-Number of Students is 5
-The Average of the Course Averages is 83.7188
-
-*/
-
