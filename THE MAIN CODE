@@ -158,3 +158,135 @@ int main() {
 	output2.close();
 	return 0;
 }
+
+//                                                                    sample of gradesIn:
+/*
+* 
+Isabella Ramirez
+8
+6.5 7 8 9 5 7.5 6 8
+7.5 8.5 9.5 10
+92 89.5 94 88.5
+6
+85
+91
+
+
+Liam Thompson
+5
+5.5 6.5 7.5 8 6 7 8.5 9.5
+8 9 9.5 10
+78 82 88 90.5
+7
+94
+89
+
+Aria Patel
+2
+9 8 7.5 8.5 6.5 7 9 8.5
+8 9 9.5 10
+85 88 92 90.5
+5
+92
+87
+
+Elijah Mitchell
+10
+7 8.5 6.5 7.5 8 9 8.5 7
+8 9 9.5 10
+75 78 80 82
+6
+91
+89
+
+Sophia Nguyen
+7
+9 8 7.5 8.5 7 9 8 6
+9 8.5 9.5 10
+88 85 90 92.5
+8
+93
+86
+*/
+
+//                                                             output for gradesOut1:
+/*
+--------------------------------------------------------------------------
+Student's first and last name: Isabella Ramirez
+Attendance: 80
+Group work : 60
+Average of quizzes : 91.8333
+Average of Labs : 71.25
+Average of homework : 88.75
+Final exam : 91
+Course average : 83.975
+--------------------------------------------------------------------------
+Student's first and last name: Liam Thompson
+Attendance : 50
+Group work : 70
+Average of quizzes : 86.8333
+Average of Labs : 73.125
+Average of homework : 91.25
+Final exam : 89
+Course average : 82.7812
+--------------------------------------------------------------------------
+Student's first and last name: Aria Patel
+Attendance : 20
+Group work : 50
+Average of quizzes : 90.1667
+Average of Labs : 80
+Average of homework : 91.25
+Final exam : 87
+Course average : 79.5125
+--------------------------------------------------------------------------
+Student's first and last name: Elijah Mitchell
+Attendance : 100
+Group work : 60
+Average of quizzes : 80
+Average of Labs : 77.5
+Average of homework : 91.25
+Final exam : 89
+Course average : 86.3125
+--------------------------------------------------------------------------
+Student's first and last name: Sophia Nguyen
+Attendance : 70
+Group work : 80
+Average of quizzes : 90.1667
+Average of Labs : 78.75
+Average of homework : 92.5
+Final exam : 86
+Course average : 86.0125
+*/
+
+
+
+
+
+//                                                                   output for gradesOut2:
+/*
+--------------------------------------------------------------------------
+Student's first and last name: Isabella Ramirez
+Course average: 83.975
+Letter grade: B
+--------------------------------------------------------------------------
+Student's first and last name: Liam Thompson
+Course average: 82.7812
+Letter grade: B
+--------------------------------------------------------------------------
+Student's first and last name: Aria Patel
+Course average: 79.5125
+Letter grade: C+
+--------------------------------------------------------------------------
+Student's first and last name: Elijah Mitchell
+Course average: 86.3125
+Letter grade: B
+--------------------------------------------------------------------------
+Student's first and last name: Sophia Nguyen
+Course average: 86.0125
+Letter grade: B
+--------------------------------------------------------------------------
+Number of Students is 5
+The Average of the Course Averages is 83.7188
+
+*/
+
