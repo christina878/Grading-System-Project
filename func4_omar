@@ -95,16 +95,16 @@ int main() {
 		}
 		//read in attendance
 		inFile >> attendance;
-
+		attendance *= 10;
 		//read in labs
 		inFile >> lab1 >> lab2 >> lab3 >> lab4 >> lab5 >> lab6 >> lab7 >> lab8;
 		labResult = findAverageLabScore(lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8);
-
+		labResult *= 10;
 
 		//read in homework
 		inFile >> hw1 >> hw2 >> hw3 >> hw4;
 		hw_result = findAverageHomeworkScore(hw1, hw2, hw3, hw4);
-
+		hw_result *= 10;
 
 
 		//read in quiz
@@ -115,7 +115,7 @@ int main() {
 
 		//read in groupwork score
 		inFile >> groupwork;
-
+		groupwork *= 10;
 
 		//read in midterm
 		inFile >> midterm;
@@ -132,11 +132,11 @@ int main() {
 		avg_courses += average;
 		output1 << "--------------------------------------------------------------------------" << endl;
 		output1 << "Student's first and last name: " << name << " " << lastName << endl;
-		output1 << "Attendance: " << left << setw(width) << attendance << endl;
-		output1 << "Group work: " << setw(width) << groupwork << endl;
+		output1 << "Attendance: " << left << setw(width) << attendance/10 << endl;
+		output1 << "Group work: " << setw(width) << groupwork/10 << endl;
 		output1 << "Average of quizzes: " << setw(width) << quiz_result << endl;
-		output1 << "Average of Labs: " << setw(width) << labResult << endl;
-		output1 << "Average of homework: " << setw(width) << hw_result << endl;
+		output1 << "Average of Labs: " << setw(width) << labResult/10 << endl;
+		output1 << "Average of homework: " << setw(width) << hw_result/10 << endl;
 		output1 << "Final exam: " << setw(width) << final << endl;
 		output1 << "Course average: " << setw(width) << average << endl;
 
@@ -146,7 +146,7 @@ int main() {
 		output2 << "Student's first and last name: " << name << " " << lastName << endl;
 		output2 << "Course average: " << left << setw(width) << average << endl;
 		output2 << "Letter grade: " << setw(width) << calculateLetterGrade(average) << endl;
-	
+
 	}
 	output2 << "--------------------------------------------------------------------------" << endl;
 	output2 << "Number of Students is " << studentCount << endl;
