@@ -94,7 +94,8 @@ int main() {
 		>> groupwork
 		>> midterm
 		>> final;
-
+		studentCount++;
+		//count the % of the gropg for each category
 		attendance *= 10;
 
 		labResult = findAverageLabScore(lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8);
@@ -106,18 +107,18 @@ int main() {
 		quiz_result = findAverageQuizScore(quiz1, quiz2, quiz3, quiz4);
 
 		groupwork *= 10;
-
+	
 		//input all the data in gradeOut1.txt
 
 		average = (attendance * 0.10) + (labResult * 0.15) + (hw_result * 0.15) + (quiz_result * 0.15) + (groupwork * 0.05) + (midterm * 0.20) + (final * 0.20);
 		avg_courses += average;
 		output1 << "--------------------------------------------------------------------------" << endl;
 		output1 << "Student's first and last name: " << firstname << " " << lastName << endl;
-		output1 << "Attendance: " << left << setw(width) << attendance << endl;
-		output1 << "Group work: " << setw(width) << groupwork << endl;
+		output1 << "Attendance: " << left << setw(width) << attendance/10 << endl;
+		output1 << "Group work: " << setw(width) << groupwork/10 << endl;
 		output1 << "Average of quizzes: " << setw(width) << quiz_result << endl;
-		output1 << "Average of Labs: " << setw(width) << labResult << endl;
-		output1 << "Average of homework: " << setw(width) << hw_result << endl;
+		output1 << "Average of Labs: " << setw(width) << labResult/10 << endl;
+		output1 << "Average of homework: " << setw(width) << hw_result/10 << endl;
 		output1 << "Final exam: " << setw(width) << final << endl;
 		output1 << "Course average: " << setw(width) << average << endl;
 
